@@ -24,7 +24,6 @@ export const StyledBox = muiStyles.styled(Box)`
 
         @media (max-width: 500px) {
             width: 7rem;
-            height: 7rem;
 
         }
     
@@ -90,7 +89,7 @@ export const StyledBox = muiStyles.styled(Box)`
         }
 
         @media (max-width: 500px) {
-            width: 4rem;
+            width: 7rem;
             height: 70%;
             gap: 0;
             justify-content: space-evenly;

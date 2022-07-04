@@ -1,8 +1,11 @@
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+
+import { CartContext } from "../../providers/cart";
+
 import { StyledButton, StyledPaper } from "./style";
 
 const CartInfo = () => {
-  const cartProducts = useSelector((store) => store.cartProducts);
+  const { cartProducts } = useContext(CartContext);
 
   const calculateTotal = () => {
     const values = [];

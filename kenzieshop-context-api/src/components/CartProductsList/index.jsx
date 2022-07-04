@@ -1,12 +1,16 @@
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+
+import { CartContext } from "../../providers/cart";
+
 import CartProductCard from "../CartProductCard";
+
 import { v4 as uuidv4 } from "uuid";
+
 import { StyledPaper } from "./style";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 
-
 const CartProductsList = () => {
-  const cartProducts = useSelector((store) => store.cartProducts);
+  const { cartProducts } = useContext(CartContext);
 
   const cartUniqueProducts = () => {
     const uniqueProducts = [];

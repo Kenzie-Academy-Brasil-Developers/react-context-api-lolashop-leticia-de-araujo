@@ -1,13 +1,15 @@
-import { useDispatch } from "react-redux";
-import { addCartThunk } from "../../store/modules/cartProducts/thunk";
+import { useContext } from "react";
+
+import { CartContext } from "../../providers/cart";
+
 import { StyledButton, StyledPaper } from "./style";
 
 const ProductCard = ({ product }) => {
-  const dispatch = useDispatch();
-
   const handleClickAdd = () => {
-    return dispatch(addCartThunk(product));
+    addToCart(product);
   };
+
+  const { addToCart } = useContext(CartContext);
 
   return (
     <StyledPaper>

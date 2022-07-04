@@ -1,11 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addCartThunk,
-  removeCartThunk,
-} from "../../store/modules/cartProducts/thunk";
+import { CartContext } from "../../providers/cart";
 
 import { StyledBox, StyledButton } from "./style";
 
@@ -14,9 +10,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 const CartProductCard = ({ product }) => {
-  const cartProducts = useSelector((store) => store.cartProducts);
-
-  const dispatch = useDispatch();
+  const { cartProducts, addToCart, removeFromCart } = useContext(CartContext);
 
   const [thisProdQtd, setThisProdQtd] = useState(1);
 
@@ -31,16 +25,16 @@ const CartProductCard = ({ product }) => {
   useEffect(() => qtdProduct(product), [cartProducts]);
 
   const handleClickAddCart = () => {
-    return dispatch(addCartThunk(product));
+    addToCart(product);
   };
 
   const handleClickRemoveCart = () => {
-    return dispatch(removeCartThunk(product.id));
+    removeFromCart(product.id);
   };
 
   const handleClickRemoveAllCart = () => {
     for (let i = 0; i < thisProdQtd; i++) {
-      dispatch(removeCartThunk(product.id));
+      removeFromCart(product.id);
     }
   };
 
